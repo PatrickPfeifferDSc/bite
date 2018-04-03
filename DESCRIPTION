@@ -1,0 +1,27 @@
+Package: bate
+Type: Package
+Title: Estimating Bayesian Treatment Effects on Panel Data
+Version: 0.0.1
+Date: 2018-03-11
+Authors@R: person("Patrick", "Pfeiffer", email="patrick.pfeiffer@jku.at", role=c("aut", "cre"))
+Maintainer: Patrick Pfeiffer <patrick.pfeiffer@jku.at>
+Description: This package allows the user to estimate treatment effects in difficult 
+    panel environments. The package currently a shared factor modelling approach 
+    which allows for estimation of regression type equations under full posterior 
+    inference. Coming up will be a switching regression model framework which
+    allows for estimation of panel data treatment effects under Roy Model.
+Imports:
+    ggplot2,
+    numbers,
+    Rsolnp,
+    truncnorm,
+    Matrix,
+    stats
+Suggests:
+    R.matlab
+Depends: 
+    R(>= 3.4.2)
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1

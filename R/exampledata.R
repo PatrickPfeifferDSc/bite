@@ -1,0 +1,39 @@
+#' Example dataset to demonstrate use and structure of bate package
+#'
+#' A simulated dataset (from the framework of shared factor approach) to
+#' demonstrate the use of the SR model in package 'bate'. The file contains
+#' 5000 subjects, each of which has 4 panel observations on simulated variables.
+#' The objects 'base.mat' and 'panel.mat' represent what the function
+#' \code{\link{start_trt_unbal}}
+#'
+#' @format A list containing numerous objects:
+#' \describe{
+#'   \item{xst}{Vector of x* latent factors in ascending order for every subject}
+#'   \item{y0}{Vector of outcome without treatment ordered by subject, 4 panel outcomes correspond to 1 subject}
+#'   \item{y1}{Vector of outcome under treatment, 4 panel times batched}
+#'   \item{base.mat}{Data matrix of base format, with columns
+#'        \enumerate{
+#'          \item ID, the column which uniquely identifies each subject
+#'          \item panel times, the number of subsequent meassures for a subject
+#'          \item treatment, usually coded 0 or 1
+#'          \item variable 1, for this dataset normally distributed
+#'          \item variable 2, for this dataset binary
+#'          \item variable 3, for this dataset binary
+#'        }
+#'        }
+#'  \item{panel.mat}{Data matrix, but other format than base.mat
+#'      \enumerate{
+#'        \item ID
+#'        \item panel timepoint t
+#'        \item outcome y
+#'        \item treatment
+#'        \item dummy for panel time = 2
+#'        \item dummy for panel time = 3
+#'        \item dummy for panel time = 4
+#'      }
+#'  }
+#' }
+#'
+#' @source This dataset stems from a simulation process and represents fictive data. Credit for original software goes to
+
+"exampledata"

@@ -8,7 +8,7 @@ Jacobi, Wagner, Frühwirth-Schnatter (2016),
 with an application to earnings effects of maternity leave", Journal of Econometrics, 193, 234-250.
 
 For using this package you may refer to devtools:
-> install.packages("devtools")
+> install.packages("devtools") \
 > devtools::install_github("PatrickWolfPfeiffer/bate")
 
 Please give comments, they are always appreciated!

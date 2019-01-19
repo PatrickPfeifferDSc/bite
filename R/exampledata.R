@@ -1,7 +1,7 @@
 #' Example dataset to demonstrate use and structure of bate package
 #'
-#' A simulated dataset (from the framework of shared factor approach) to
-#' demonstrate the use of the SR model in package 'bate'. The file contains
+#' A simulated dataset (from the framework of the shared factor model) to
+#' demonstrate the use of the SR model in package 'bite'. The file contains
 #' 5000 subjects, each of which has 4 panel observations on simulated variables.
 #' The objects 'base.mat' and 'panel.mat' represent what the function
 #' \code{\link{start_trt_unbal}}
@@ -34,6 +34,6 @@
 #'  }
 #' }
 #'
-#' @source This dataset stems from a simulation process and represents fictive data. Credit for original software goes to
+#' @source This dataset stems from a simulation process and represents fictive data.
 
 "exampledata"

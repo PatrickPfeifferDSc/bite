@@ -5,13 +5,10 @@
 #'
 #' @param x a time series of length k
 #'
-#' @return empirical inefficiency factor
+#' @return 2 numeric values, the empirical inefficiency factor and m
+#'
 
 ineff_factor <- function(x){
-
-  # x time series of length (k)
-  # inefficiency factor : initial monotonoe sequence Geyer (1992)
-
   nlag <- 1000  # maximum_lag
   if(length(x)<=1001) nlag <- length(x)-2
   n <- length(x)

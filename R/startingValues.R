@@ -17,7 +17,7 @@
 #'
 #' @import stats
 
-start_vals <- function(model, x, y, Tn){
+startingValues <- function(model, x, y, Tn){
   alphav <- glm(x ~ ., data= as.data.frame(model$Wx[,2:model$dx]), family = "binomial"(link="probit"))
   beta0 <- solve((t(model$W) %*% model$W)) %*% (t(model$W)%*% y) # should give INV(A)*B another method would be left matrix division: A\B
   res_var <- sum((y-(model$W%*%beta0))^2)/(Tn-dim(model$W)[2])

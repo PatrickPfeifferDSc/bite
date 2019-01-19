@@ -15,7 +15,7 @@
 #'
 #'@return f ... shared latent factor
 
-draw_sharedfactor <- function(epsx,lambdax,epsy,sgma2,lambda,start_x,nx,start_y,Tn){
+drawSharedFactor <- function(epsx,lambdax,epsy,sgma2,lambda,start_x,nx,start_y,Tn, fix.f=FALSE){
 
   n <- length(epsx)
 
@@ -31,20 +31,19 @@ draw_sharedfactor <- function(epsx,lambdax,epsy,sgma2,lambda,start_x,nx,start_y,
 
   if (length(epsy)==(2*Tn)){
     for (t in Tmin:Tmax){
-
       # Compute Posterior variance matrix of latent factors
       X <- cbind(c(lambdax, lambdah[1:t,1], lambdah[1:t,2]))
       Sinv <- diag(c(1,1/sgma2[1:t,1],1/sgma2[1:t,2]))
       Xs <- t(X)%*%Sinv
       Ft <- solve(1 + (Xs%*%X))
 
-      #Build regressor
+      # Build regressor
       indx <- c( (start_x[t,1] + (0:(nx[t,1] - 1))), (start_x[t,2] + (0:(nx[t,2]-1))) )
-      indy <- cbind( matrix(as.vector(start_y[t,1] + (0:(t*nx[t,1]-1))), t, nx[t,1]) , matrix(as.vector(start_y[t,2]+(0:(t*nx[t,2]-1))), t, nx[t,2]) )
+      indy <- cbind(matrix(as.vector(start_y[t,1] + (0:(t*nx[t,1]-1))), t, nx[t,1]) , matrix(as.vector(start_y[t,2]+(0:(t*nx[t,2]-1))), t, nx[t,2]) )
       y <- rbind(t(epsx[indx]), epsy[indy], epsy[indy + Tn])
       ft <- Ft%*%(Xs%*%y)
       nt <- sum(nx[t,])
-      f[indx,1] <- (sqrt(Ft) %*% runif(nt)) + ft
+      f[indx,1] <- (sqrt(Ft) %*% rnorm(nt)) + ft
     }
   }else{
     # if statement for data being just panel times, then going through for all the treatment
@@ -65,7 +64,7 @@ draw_sharedfactor <- function(epsx,lambdax,epsy,sgma2,lambda,start_x,nx,start_y,
           }
           ft <- Ft%*%(Xs%*%y)
           nt <- sum(nx[t,j])
-          f[indx,1] <- (sqrt(Ft)%*%runif(nt)) + ft
+          f[indx,1] <- (sqrt(Ft)%*%rnorm(nt)) + ft
         }
 
       }

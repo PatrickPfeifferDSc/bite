@@ -15,9 +15,9 @@ mh_step(theta_old, theta_new, lpost_old, lpost_new, lq_new, lq_old)
 
 \item{lpost_new}{new log posterior}
 
-\item{lq_new}{log q(theta_new|theta_old)}
+\item{lq_new}{log q(theta_new|theta_old) the proposal log-densities}
 
-\item{lq_old}{log q(theta_old|theta_new)}
+\item{lq_old}{log q(theta_old|theta_new) the proposal log-densities}
 }
 \value{
 A list of the new theta accepted value, or the old

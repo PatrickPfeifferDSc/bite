@@ -37,3 +37,4 @@ Other loglikelihoods: \code{\link{llikj}},
   \code{\link{loglik_mvnorm_balpan}},
   \code{\link{negllik_jt_rho}}, \code{\link{negllik_jt}}
 }
+\concept{loglikelihoods}

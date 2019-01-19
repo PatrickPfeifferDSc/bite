@@ -7,15 +7,15 @@
 comp_logml(ySy, XSy, invBN, indic, iB0)
 }
 \arguments{
-\item{ySy}{matrix product of y vector normalized by standard deviation}
+\item{ySy}{matrix product of y vector standardized by standard deviation}
 
-\item{XSy}{matrix product of data, normalizing matrix and y outcome}
+\item{XSy}{matrix product of data, standardizing matrix and y outcome}
 
-\item{invBN}{inverse Beta matrix}
+\item{invBN}{inverse beta matrix}
 
-\item{indic}{indices of likelihood to be accessed}
+\item{indic}{indices for regression effects, their likelihood to be accessed}
 
-\item{iB0}{previous precision matrix}
+\item{iB0}{k x k prior precision matrix}
 }
 \value{
 Returns an object containing the numeric value of the marginal Likelihood and beta parameters

@@ -4,7 +4,8 @@
 \alias{negllik_jt_rho}
 \title{Computes negative log-Likelihood}
 \usage{
-negllik_jt_rho(theta, j, t, epsy, mu_xst, start_x, nx, start_y, sgmaj, rhoj)
+negllik_jt_rho(theta, j, t, epsy, mu_xst, start_x, nx, start_y, sgmaj,
+  rhoj)
 }
 \arguments{
 \item{theta}{parameter of variance/covariance matrix of dimension 2Tmax x 1}
@@ -41,3 +42,4 @@ Other loglikelihoods: \code{\link{lcondx}},
   \code{\link{lnorm}}, \code{\link{loglik_mvnorm_balpan}},
   \code{\link{negllik_jt}}
 }
+\concept{loglikelihoods}

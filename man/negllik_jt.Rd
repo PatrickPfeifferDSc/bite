@@ -41,3 +41,4 @@ Other loglikelihoods: \code{\link{lcondx}},
   \code{\link{lnorm}}, \code{\link{loglik_mvnorm_balpan}},
   \code{\link{negllik_jt_rho}}
 }
+\concept{loglikelihoods}

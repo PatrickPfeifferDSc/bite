@@ -8,7 +8,8 @@
 #'
 #' @param mu_xst mean vector of latent utility values
 #' @param resy residual vector on y
-#' @param start_x matrix of Tmax x trtmax holding information at which indicator value observations with panel time t and treatment j start
+#' @param start_x matrix of Tmax x trtmax holding information at which indicator
+#' value observations with panel time t and treatment j start
 #' @param start_y analoguous to start_x for outcome values
 #' @param nx T x trtmax matrix containing number of observations for each combination of t and j
 #' @param sgma variance matrix
@@ -43,5 +44,4 @@ condmoms_util <- function(mu_xst,resy,start_x,nx,start_y,sgma,rho,lambda=NULL){
   }  # there might be an additional condition, but till now it does not converge well: lambda given to condmoms_util()
   return(list(mxc=mxc,var_xc=var_xc))
 }
-
 

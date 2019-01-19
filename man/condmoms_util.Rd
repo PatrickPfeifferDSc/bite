@@ -4,14 +4,16 @@
 \alias{condmoms_util}
 \title{Conditional Moments Computation}
 \usage{
-condmoms_util(mu_xst, resy, start_x, nx, start_y, sgma, rho, lambda = NULL)
+condmoms_util(mu_xst, resy, start_x, nx, start_y, sgma, rho,
+  lambda = NULL)
 }
 \arguments{
 \item{mu_xst}{mean vector of latent utility values}
 
 \item{resy}{residual vector on y}
 
-\item{start_x}{matrix of Tmax x trtmax holding information at which indicator value observations with panel time t and treatment j start}
+\item{start_x}{matrix of Tmax x trtmax holding information at which indicator
+value observations with panel time t and treatment j start}
 
 \item{nx}{T x trtmax matrix containing number of observations for each combination of t and j}
 

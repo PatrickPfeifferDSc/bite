@@ -12,10 +12,12 @@ make_regmat_unbal(data, model)
 \item{model}{Information on the model type, etc.}
 }
 \value{
-Internal data object, containing all information about parameters, model, etc.
+A modelling object with W, the regressor matrix of dimension
+n*t+1 x p
 }
 \description{
 [Internal Function] Takes the basic objects after read-in of base.mat
 and panel.mat and restructures them to an internal data object to proceed.
-Constructs a proper model matrix.
+Constructs a proper model matrix, which encapsulates the outcome model
+covariates for each panel time
 }

@@ -4,7 +4,7 @@
 \alias{select_trt_sharedfac}
 \title{Modelling Treatment Effects via Shared Factor Model}
 \usage{
-select_trt_sharedfac(data, model, prior, mcmc)
+select_trt_sharedfac(data, model, prior, mcmc, control)
 }
 \arguments{
 \item{data}{takes data object from the function start_trt_unbal}

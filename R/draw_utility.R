@@ -14,7 +14,7 @@
 #' @return xst x*, the latent utility for selection model
 
 
-draw_utility <- function(x, mxst, sxst){
+drawUtility <- function(x, mxst, sxst){
   # draws latent utilities  for the probit model
   # Author: Helga Wagner
   # Last Version : Jan 4, 2012

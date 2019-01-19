@@ -26,3 +26,4 @@ Other loglikelihoods: \code{\link{lcondx}},
   \code{\link{lnorm}}, \code{\link{negllik_jt_rho}},
   \code{\link{negllik_jt}}
 }
+\concept{loglikelihoods}

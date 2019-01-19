@@ -23,7 +23,12 @@
 #'
 #' @import stats
 
-draw_indic_alphaSF <- function(y, X, delta, deltafix, omega, invA0, isel){
+drawAlphaIndicesSF <- function(y, X, delta, deltafix, omega, invA0, isel, fix.alpha = FALSE){
+  if(fix.alpha){
+    delta <- c(1,1,0,1,1)
+    alpha <- c(-0.9, 0.8, 0 , 1.5)
+    return(list(delta=delta, alpha = alpha))
+  }
 
   df <- length(delta)
   nd <- df - sum(deltafix)
@@ -71,7 +76,7 @@ draw_indic_alphaSF <- function(y, X, delta, deltafix, omega, invA0, isel){
   # Draw the regression effects
   aN <- AN %*% aNh
   ha <- cbind(rnorm(length(aN)))
-  alpha_new <- t(chol(AN))%*%ha + aN
+  alpha_new <- t(chol(AN)) %*% ha + aN
 
   alpha <- matrix(0, df, 1)
   idx <- as.logical(delta)

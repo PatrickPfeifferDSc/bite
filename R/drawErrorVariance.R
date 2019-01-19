@@ -1,7 +1,5 @@
 #' Draw Error Variance
 #'
-#' [Internal Function] \code{draw_errorvar} samples the variance of the errorterm from a (conjugate)
-#'
 #' @param eps2 vector of squared residuals
 #' @param indt indicators where panel times start.
 #' @param indy0 index y vector
@@ -10,7 +8,15 @@
 #'
 #' @import stats
 
-draw_errorvar <- function(eps2,indt,indy0,sn,prior){
+drawErrorVariance <- function(eps2,indt,indy0,sn, prior, fix.sigma = FALSE){
+  if (fix.sigma){
+    sgma2 <-  matrix(0, Tmax, 2)
+    sgma2[,1] <- 0.25
+    sgma2[,2] <- 1
+    var_yt <- matrix(0,length(indy0),1); indy1 <- !indy0;
+    var_yt[indy0] <- indt[indy0,]%*%sgma2[,1] ; var_yt[indy1] <- indt[indy1,]%*%sgma2[,2];
+    return(list(sgma2 = sgma2, var_yt = var_yt))
+  }
 
   Tmax <- dim(sn)[1]
 

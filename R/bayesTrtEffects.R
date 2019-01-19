@@ -35,7 +35,8 @@ bayesTrtEffects <- function(base.mat, panel.mat, type='SF', covars = NULL, model
                             control = list(fix.alpha=FALSE, fix.beta=FALSE, fix.sigma=FALSE,
                                            fix.f=FALSE, sort.data=FALSE)){
 
-  data.list <- readPanelUb(base.mat, panel.mat, type, covars, model.name, sort.data)
+  data.list <- readPanelUb(base.mat, panel.mat, type = type, covars = covars,
+                           name = model.name, sort.data = control$sort.data)
   data <- data.list$data; model <- data.list$model;
   rm("data.list")    # not to bloat environment
 

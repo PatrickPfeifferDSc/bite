@@ -95,7 +95,7 @@ readPanelUb <- function(base.mat, panel.mat, type, covars, name, sort.data, cont
   # creates new help columns trt and Ti in panel matrix for sorting, which will be dropped afterwards
 
 
-  if (control$sort.data){
+  if (sort.data){
     panel.mat$trt <- 0
     panel.mat$trt[panel.mat$ID %in% base.mat$ID[which(base.mat$trt==1)]] <- 1
     panel.mat$Ti <- Tmin

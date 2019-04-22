@@ -24,7 +24,7 @@ A list of the new theta accepted value, or the old
 value if rejected and an acceptance indicator.
 }
 \description{
-[Internal Function] Performs Metropolis Hastings steps for
+Internal. Performs Metropolis Hastings steps for
 internal MCMC procedure. lpost_old/lpost_new are log-posteriors at
 theta_old/theta_new
 }

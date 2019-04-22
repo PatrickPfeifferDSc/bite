@@ -1,6 +1,6 @@
 #' Compute Negative Log-Likelihood
 #'
-#' Computes normal, conditional negative Loglikelihood for all x observations with treatment j
+#' Internal. Computes normal, conditional negative Loglikelihood for all x observations with treatment j
 #'
 #' @param jtrt treatment j
 #' @param epsy residual vector of y \eqn{\epsilon = y - \mu_y}
@@ -16,15 +16,6 @@
 #' @return the log-Likelihood value for given point
 #'
 #' @family loglikelihoods
-
-# computes the negativ log-likelihood for all  x-observations with treatment jtrt
-#  mxst..n x 1 mean and variance of the latent utilities x_star
-#  nu      ...   degrees of freedom for the t-distribution
-#
-# Author: Helga Wagner
-# Last Change: Sep, 10,2012
-##########################################################################
-
 
 lcondx <- function(jtrt, epsy, mu_xst, start_x, nx, start_y, sgmaj, rhoj){
 

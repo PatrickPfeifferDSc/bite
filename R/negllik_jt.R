@@ -1,6 +1,6 @@
 #' Compute Negative log-Likelihood
 #'
-#' [Internal Function]
+#' Internal.
 #'
 #' @param theta parameter of variance/covariance matrix of dimension 2Tmax x 1
 #' @param j treatment

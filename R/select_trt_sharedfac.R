@@ -1,13 +1,13 @@
 #' Modelling Treatment Effects via Shared Factor Model
 #'
-#' [Internal Function] \code{select_trt_sharedfac} implements the shared
-#' factor model. It is the core function of wrapper \code{\link{start_trt_unbal}}
+#' Internal. \code{select_trt_sharedfac} implements the shared
+#' factor model. It is the core function of wrapper \code{\link{bayesTrtEffects}}
 #' which passes its parameters on, concerning the MCMC process, model and data.
 #'
-#' @param data takes data object from the function start_trt_unbal
-#' @param model takes model parameters from function start_trt_unbal
+#' @param data takes data object from the function bayesTrtEffects
+#' @param model takes model parameters from function bayesTrtEffects
 #' @param prior specified prior parameters
-#' @param mcmc mcmc parameters specified by start_trt_unbal, potentially subject to change
+#' @param mcmc mcmc parameters specified by bayesTrtEffects, potentially subject to change
 #'
 #' @return Returns a MCMC selection list object containing all estimated coefficients and
 #' other meassures.
@@ -60,7 +60,7 @@ select_trt_sharedfac <- function(data, model, prior, mcmc, control){
   mcmc_select$beta <- matrix(0, nmc, model$dy)            # holds the coefficients values of outcome models (both under treatment and without)
   mcmc_select$omega_beta <- matrix(0, nmc, 1)             # holds the estimated covariance values of outcome models
 
-  mcmc_select$lambda <- array(0, dim=c(nmc,Tmax,2))       # holds lambda parameters for outcome models (all panel times and every treatment)
+  mcmc_select$lambda <- array(0, dim = c(nmc,Tmax,2))       # holds lambda parameters for outcome models (all panel times and every treatment)
   mcmc_select$delta_lambda <- matrix(0, nmc, 2*Tmax)      # heolds indicator values for lambda parameters if included, for outcome models (lambda0 , lambda1) and lambdax is automaticly included?
   mcmc_select$omega_lambda <- matrix(0, nmc, 1)           # some correlation coefficient ?
 
@@ -127,7 +127,7 @@ select_trt_sharedfac <- function(data, model, prior, mcmc, control){
 
   ###########################################################################
   # Run MCMC
-  ###########################################################################
+
   isel <- 0                   # index, is 1 as soon as selection process starts
   start_time <- Sys.time()
   print("starting MCMC process...")

@@ -33,12 +33,11 @@ panel time - treatment combinations in outcome vector}
 A scalar which is the negative log-Likelihood at the given point.
 }
 \description{
-[Internal Function]
+Internal.
 }
 \seealso{
 Other loglikelihoods: \code{\link{lcondx}},
   \code{\link{llikj}}, \code{\link{lmvnorm}},
-  \code{\link{lnorm}}, \code{\link{loglik_mvnorm_balpan}},
-  \code{\link{negllik_jt_rho}}
+  \code{\link{lnorm}}, \code{\link{negllik_jt_rho}}
 }
 \concept{loglikelihoods}

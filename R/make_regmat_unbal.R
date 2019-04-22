@@ -1,6 +1,6 @@
 #' Transscribes Basic Object to Internal Matrix
 #'
-#' [Internal Function] Takes the basic objects after read-in of base.mat
+#' Internal. Takes the basic objects after read-in of base.mat
 #' and panel.mat and restructures them to an internal data object to proceed.
 #' Constructs a proper model matrix, which encapsulates the outcome model
 #' covariates for each panel time
@@ -8,16 +8,13 @@
 #' @param data The collected information and data in one internal object
 #' @param model Information on the model type, etc.
 #'
-#' @return A modelling object with W, the regressor matrix of dimension
-#' n*t+1 x p
+#' @return A modelling object with W, the regressor matrix of dimension n*t+1 x p
 #'
 
 make_regmat_unbal <- function (data, model){
-  # This method constructs model matrices for given base and panel covariables
-
   if(!exists("covy_common")){
     data$covy_common <- rep(0, data$dw)
-    print("common covariates for y not found -> fixed at 0")
+    print("common covariates for y not found, will be fixed at 0")
   }
   model$Wx <- data$Wx
   model$dx <- data$dx

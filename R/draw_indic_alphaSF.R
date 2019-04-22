@@ -1,6 +1,6 @@
 #' Draw indicators and regression coefficients
 #'
-#' [Internal Function] \code{draw_indic_alphaSF} draws indicator values and
+#' Internal. \code{draw_indic_alphaSF} draws indicator values and
 #' regression coefficients for the selection model (probit model of
 #' choosing treatment)
 #'
@@ -21,7 +21,6 @@
 #' @return delta ...  k x 1 indicators
 #' @return alpha ... k x 1  regression effects
 #'
-#' @import stats
 
 drawAlphaIndicesSF <- function(y, X, delta, deltafix, omega, invA0, isel, fix.alpha = FALSE){
   if(fix.alpha){

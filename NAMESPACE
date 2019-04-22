@@ -2,5 +2,4 @@
 
 export(bayesTrtEffects)
 import(Matrix)
-import(stats)
 importFrom(truncnorm,rtruncnorm)

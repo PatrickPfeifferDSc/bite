@@ -1,6 +1,6 @@
 #' Conditional Moments Computation
 #'
-#' [Internal Function] \code{condmoms_util} returns an object consisting of conditional moments
+#' Internal. \code{condmoms_util} returns an object consisting of conditional moments
 #'
 #' Computes conditional mean and variance in the utility x* model.
 #' Construct array resyt (Residuals of y_t):

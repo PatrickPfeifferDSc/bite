@@ -11,9 +11,9 @@ postmom_help_reg(x, y, Wx, Wy, start_x, nx, start_y, sgma, rho, lambda, D)
 
 \item{y}{outcome}
 
-\item{Wx}{feature matrix for selection model}
+\item{Wx}{design matrix for selection model}
 
-\item{Wy}{feature matrix for outcome data model}
+\item{Wy}{design matrix for outcome data model}
 
 \item{start_x}{matrix containing indices where certain observations
 begin in the vector sorted by treatment and panel times}
@@ -35,5 +35,5 @@ begin in the vector sorted by treatment and panel times}
 List of Matrices used for computation of posterior moments.
 }
 \description{
-Computes help quantities for posterior moments of regression coefficients.
+Internal. Computes help quantities for posterior moments of regression coefficients.
 }

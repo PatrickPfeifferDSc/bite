@@ -10,7 +10,7 @@ ineff_factor(x)
 \item{x}{a time series of length k}
 }
 \value{
-empirical inefficiency factor
+2 numeric values, the empirical inefficiency factor and m
 }
 \description{
 \code{ineff_factor} calculates inefficiency facors for certain time series

@@ -17,12 +17,11 @@ lmvnorm(y, mu, Sigmainv)
 Log-Likelihood value under multivariate Normal assumption.
 }
 \description{
-Compute log-Likelihood of multivariate Normals
+Internal.
 }
 \seealso{
 Other loglikelihoods: \code{\link{lcondx}},
   \code{\link{llikj}}, \code{\link{lnorm}},
-  \code{\link{loglik_mvnorm_balpan}},
   \code{\link{negllik_jt_rho}}, \code{\link{negllik_jt}}
 }
 \concept{loglikelihoods}

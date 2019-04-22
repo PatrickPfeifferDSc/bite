@@ -1,11 +1,11 @@
 #' postmom_help_reg method
 #'
-#' Computes help quantities for posterior moments of regression coefficients.
+#' Internal. Computes help quantities for posterior moments of regression coefficients.
 #'
 #' @param x data
 #' @param y outcome
-#' @param Wx feature matrix for selection model
-#' @param Wy feature matrix for outcome data model
+#' @param Wx design matrix for selection model
+#' @param Wy design matrix for outcome data model
 #' @param start_x matrix containing indices where certain observations
 #'          begin in the vector sorted by treatment and panel times
 #' @param nx dimension of x
@@ -33,18 +33,16 @@ postmom_help_reg <- function(x, y, Wx, Wy, start_x, nx, start_y, sgma, rho, lamb
   for (j in 1:2){
     sgmaj <- sgma[,j]
     rhoj <- rho[,j]
-    lambdaj <- lambda[, j]
+    lambdaj <- lambda[,j]
     Dj <- D[j]
-
     for (t in Tmin:Tmax){
       sgma_tj <- sgmaj[1:t]
       omega_tj <- rhoj[1:t]*sgma_tj
       lambda_tj <- lambdaj[1:t]
-
       Lambdaj <- cbind(c(1, omega_tj), rbind(omega_tj, (diag(sgma_tj^2)+(t(t(lambda_tj))%*%lambda_tj)*Dj)))
       ILambdaj <- solve(Lambdaj)
       nx_tj <- nx[t,j]
-      indx <- start_x[t,j] + (0:(nx_tj-1)) # indices in the x-vector
+      indx <- start_x[t,j] + (0:(nx_tj-1))      # indices in the x-vector
       indy <- start_y[t,j] + (0:(t*nx_tj-1))
       yh_tj <- rbind(x[indx], matrix(y[indy], t , nx_tj))
       Wi <- matrix(0, t+1, dx+dy)
@@ -54,7 +52,7 @@ postmom_help_reg <- function(x, y, Wx, Wy, start_x, nx, start_y, sgma, rho, lamb
         ySy <- ySy + (t(yhi) %*% Ly)
         Wi[1,1:dx] <- Wx[indx[i], ]
         Wi[2:(t+1), dx + (1:dy)] <- Wy[indy[(i-1)*t + (1:t)], ]
-        WiV <- t(Wi)%*% ILambdaj
+        WiV <- t(Wi) %*% ILambdaj
         WSW <- WSW + WiV %*% Wi
         WSy <- WSy + WiV %*% yhi
       }

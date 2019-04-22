@@ -1,6 +1,6 @@
 #' Compute Maximum log-Likelihood
 #'
-#' [Internal Function] \code{comp_logml} will return a numeric value, the maximum log-likelihood
+#' Internal. \code{comp_logml} will return a numeric value, the maximum log-likelihood
 #' y = X*alpha+epsilon,  epsilon N(0,S), alpha ~ N(0,inv(iA0))
 #'
 #' ySy ...  y'S^{-1}y

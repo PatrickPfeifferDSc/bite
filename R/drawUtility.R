@@ -1,6 +1,6 @@
 #' Draw latent utilities
 #'
-#' [Internal Function] \code{draw_utility} draws latent utilities for the
+#' Internal. \code{draw_utility} draws latent utilities for the
 #' probit model, which represents the selection of treatment. Latent
 #' utilities (x*) range from -Inf to +Inf. For x* being positive, the
 #' subject selects treatment, subject does not decide for treatment otherwise.
@@ -13,12 +13,7 @@
 #'
 #' @return xst x*, the latent utility for selection model
 
-
 drawUtility <- function(x, mxst, sxst){
-  # draws latent utilities  for the probit model
-  # Author: Helga Wagner
-  # Last Version : Jan 4, 2012
-  #########################################################################
   # Input
   # x                n x 1         treatment effects, numbered 1..ntreat
   # mu_xst=mu(x)     1 x n         fixed effects mean for the utilities xst
@@ -38,9 +33,9 @@ drawUtility <- function(x, mxst, sxst){
       tau_high <- Inf
     }
     if(length(sxst)==1){
-        xst[idx,1] <- rtruncnorm(1, mean=mxst[idx], sd=sxst, a=tau_low, b= tau_high)
+        xst[idx,1] <- rtruncnorm(1, mean = mxst[idx], sd = sxst, a = tau_low, b = tau_high)
       }else{
-        xst[idx,1] <- rtruncnorm(1, mean=mxst[idx], sd=sxst[idx], a=tau_low, b= tau_high)
+        xst[idx,1] <- rtruncnorm(1, mean = mxst[idx], sd = sxst[idx], a = tau_low, b = tau_high)
       }
     }
   return(xst)

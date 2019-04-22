@@ -1,6 +1,6 @@
 #' Compute log-Likelihood
 #'
-#' Computes the negativ log-likelihood for all observations with treatment j
+#' Internal. Computes the negativ log-likelihood for all observations with treatment j
 #'
 #' @param sgmaj,rhoj vector of \eqn{2*Tmax} parameter of the variance/covariance matrix
 #' @param j treatment

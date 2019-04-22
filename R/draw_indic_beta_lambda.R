@@ -1,6 +1,6 @@
 #' Draw Indices for beta and lambda coefficients
 #'
-#' \code{draw_indic_beta_lambda} draws beta coefficients for the outcome
+#' Internal. \code{draw_indic_beta_lambda} draws beta coefficients for the outcome
 #' models (y) and lambda parameters for shared factor modelling.
 #'
 #' y....Tn x1 ...response from fixed effects model
@@ -19,7 +19,6 @@
 #' @param invB0 startvalue matrix of beta coefficients
 #' @param isel indicator whether selection is performed
 #'
-#' @import stats
 #' @import Matrix
 
 drawBetaLambdaIndicesSF <- function(y, X, sgma2, delta, deltafix, omega1, omega2, dy, invB0, isel, fix.beta=FALSE){

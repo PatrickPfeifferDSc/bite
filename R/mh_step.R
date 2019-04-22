@@ -1,6 +1,6 @@
 #' Computes a Metropolis Hastings Step
 #'
-#' [Internal Function] Performs Metropolis Hastings steps for
+#' Internal. Performs Metropolis Hastings steps for
 #' internal MCMC procedure. lpost_old/lpost_new are log-posteriors at
 #' theta_old/theta_new
 #'

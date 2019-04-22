@@ -25,7 +25,7 @@ dataset and a model object, which contains covariate information
 amongst other specifics.
 }
 \description{
-\code{readPanelUb} takes as arguments the baseline matrix and panel matrix
+Internal. \code{readPanelUb} takes as arguments the baseline matrix and panel matrix
 seperately and transforms the (unbalanced) panel data in useable format.
 The matrices should already be in the suggested format for this
 function. (See example dataset)

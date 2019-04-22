@@ -1,9 +1,9 @@
 #' Read Data file and transform
 #'
-#' \code{readPanelUb} takes as arguments the baseline matrix and panel matrix
+#' Internal. \code{readPanelUb} takes as arguments the baseline matrix and panel matrix
 #' seperately and transforms the (unbalanced) panel data in useable format.
-#' The matrices should already be in the suggested format for this
-#' function. (See example dataset)
+#' The matrices should xalready be in the suggested format for this
+#' function. (See example dataset)l
 #'
 #' Base matrices have 1 subject in each row and a unique corresponding ID.
 #' It is used to capture the base features of a subject, which are used for
@@ -94,14 +94,13 @@ readPanelUb <- function(base.mat, panel.mat, type, covars, name, sort.data, cont
 
   # creates new help columns trt and Ti in panel matrix for sorting, which will be dropped afterwards
 
-
+  panel.mat$trt <- 0
+  panel.mat$trt[panel.mat$ID %in% base.mat$ID[which(base.mat$trt==1)]] <- 1
+  panel.mat$Ti <- Tmin
+  for (i in Tmin:Tmax){
+    panel.mat$Ti[panel.mat$ID %in% base.mat$ID[which(base.mat$Ti==i)]] <- i
+  }
   if (sort.data){
-    panel.mat$trt <- 0
-    panel.mat$trt[panel.mat$ID %in% base.mat$ID[which(base.mat$trt==1)]] <- 1
-    panel.mat$Ti <- Tmin
-    for (i in Tmin:Tmax){
-      panel.mat$Ti[panel.mat$ID %in% base.mat$ID[which(base.mat$Ti==i)]] <- i
-    }
     base.mat <- base.mat[order(base.mat$trt, base.mat$Ti, base.mat$ID), ]
     panel.mat <- panel.mat[order(panel.mat$trt, panel.mat$Ti, panel.mat$ID, panel.mat$panelT), ]
   }
@@ -122,9 +121,7 @@ readPanelUb <- function(base.mat, panel.mat, type, covars, name, sort.data, cont
   data.list$indy <- panel.mat[,1]
   data.list$Ti <- Ti
 
-  ########### SORT DATA END ################################
   id <- base.mat[,1]
-
   upper.ind <- 0
   if (control.test){
     for (i in 1:n){
@@ -138,55 +135,7 @@ readPanelUb <- function(base.mat, panel.mat, type, covars, name, sort.data, cont
       if (!all(tpanel == 1:Tiy)) stop("subjects are not in the same order as in the base file or obs. missing")
     }
   }
-
   panel.mat$trt <- panel.mat$Ti <- NULL
-
-  #### OLD Sorting Algorithm #####
-  # if (control$sort.data){
-  #   # finds indices of rows, which have the same panel times and treatment x, this is used for sorting the observations
-  #   for (j in 0:1){
-  #     for (ti in Tmin:Tmax){
-  #       ind.jt <- which(x == j & Ti == ti)     # index numbers of individuals with trt = j and panel time of ti
-  #       n.jt <- length(ind.jt)         # number of obs. with trt = j and panel time of ti
-  #       data.list$nx[ti, j+1] <- n.jt
-  #       data.list$start_x[ti, j+1] <- index.base         # indication matrix where individuals with panel times = ti and trt = j begin
-  #       data.list$start_y[ti, j+1] <- index.panel + 1
-  #       it <- 1:ti
-  #       for (i in 1:n.jt){
-  #         indx <- ind.jt[i]
-  #         data.list$x[index.base] <- x[indx]
-  #         data.list$Ti[index.base] <- Ti[indx]
-  #         data.list$Wx[index.base,] <- c(1,as.matrix(base.mat)[indx, 4:k])    # automatically takes the last columns as covariates, needs change
-  #         indy <- T_start[indx]:T_end[indx]
-  #         data.list$indy[index.panel + it] <- index.base
-  #         data.list$Tvec[index.panel + it] <- panel.mat[indy, 2]
-  #         data.list$y[index.panel + it] <- panel.mat[indy, 3]
-  #         data.list$Wi[index.panel + it,] <- as.matrix(panel.mat)[indy, 4:k.pan]
-  #         index.base <- index.base + 1
-  #         index.panel <- index.panel + ti
-  #       }
-  #     }
-  #   }
-  # }else{
-  #   for (j in 0:1){
-  #     for (ti in Tmin:Tmax){
-  #       ind.jt <- which(x == j & Ti == ti)
-  #       n.jt <- length(ind.jt)
-  #       data.list$nx[ti, j+1] <- n.jt
-  #       data.list$start_x[ti, j+1] <- index.base
-  #       data.list$start_y[ti, j+1] <- index.panel+1
-  #       it <- 1:ti
-  #     }
-  #   }
-  #   data.list$x <- x
-  #   data.list$Ti <- Ti
-  #   data.list$Wx <- as.matrix(cbind(1, base.mat[,4:k]))
-  #   data.list$indy <- panel.mat[,1]
-  #   data.list$Tvec <- panel.mat[,2]
-  #   data.list$y <- panel.mat[,3]
-  #   data.list$Wi <- as.matrix(panel.mat[,4:k.pan])
-  # }
-
   data.list$nx0 <- sum(1-data.list$x)
   data.list$nx1 <- sum(data.list$x)
   data.list$indy0 <- as.logical(1-data.list$x[data.list$indy])

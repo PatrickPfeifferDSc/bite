@@ -1,5 +1,6 @@
 #' Compute Normal log-Likelihood
 #'
+#' Internal.
 #' \code{lnorm} computes log-Likelihood of a Normal distributed sample
 #'
 #' @param x sample
@@ -10,8 +11,7 @@
 #' @family loglikelihoods
 
 lnorm <- function(x, mu, varinv){
-  if (!is.vector(x)) stop("X in log-Likelihood is wrong dimension: has to be a vector")
-  n <- length(x)
+  n <- length(as.vector(x))
   # if ((k > 1) || (dim(mu)[1] != 1) || (dim(mu)[1] > 1) || ((dim(varinv)[2] > 1))){
   #   stop("error: wrong dimensions of input variables")
   # }

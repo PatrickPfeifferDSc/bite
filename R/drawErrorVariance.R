@@ -1,12 +1,13 @@
 #' Draw Error Variance
 #'
+#' Internal.
+#'
 #' @param eps2 vector of squared residuals
 #' @param indt indicators where panel times start.
 #' @param indy0 index y vector
 #' @param sn previous matrix to determine correct dimension of variance matrix
 #' @param prior object containing prior information, prior standard deviance is used
 #'
-#' @import stats
 
 drawErrorVariance <- function(eps2,indt,indy0,sn, prior, fix.sigma = FALSE){
   if (fix.sigma){

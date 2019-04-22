@@ -17,13 +17,7 @@ loglik_mvnorm_balpan(y, mu = matrix(0, dim(y)[1], dim(y)[2]), Sigmainv)
 A scalar value, the log-Likelihood for given data, mu and Sigma.
 }
 \description{
-\code{loglik_mvnorm_balpan} computes for balanced panel data
+Internal. \code{loglik_mvnorm_balpan} computes for balanced panel data
 \eqn{dim(y) = t x N} with equal \eqn{\Sigma} across observations
 }
-\seealso{
-Other loglikelihoods: \code{\link{lcondx}},
-  \code{\link{llikj}}, \code{\link{lmvnorm}},
-  \code{\link{lnorm}}, \code{\link{negllik_jt_rho}},
-  \code{\link{negllik_jt}}
-}
-\concept{loglikelihoods}
+\concept{log-Likelihoods}

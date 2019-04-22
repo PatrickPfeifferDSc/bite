@@ -1,27 +1,27 @@
 Package: bite
 Type: Package
-Title: Bayesian Inference On Treatment Effects For Panel Data
-Version: 0.0.4
+Title: Bayesian Inference On Treatment Effects For Panel Data 
+Version: 0.0.0.9000
 Date: 2018-03-11
-Authors@R: person("Patrick", "Pfeiffer", email="patrick.pfeiffer@jku.at", role=c("aut", "cre"))
-Maintainer: Patrick Pfeiffer <patrick.pfeiffer@jku.at>
+Authors@R: person("Patrick", "Pfeiffer", email="patrick.pfeiffer.dsc@gmail.com", role=c("aut", "cre"))
+Maintainer: Patrick Pfeiffer <patrick.pfeiffer.dsc@gmail.com>
 Description: This package allows the user to estimate treatment effects in 
-    panel environments. The package currently implements a shared factor modelling approach 
-    which allows for estimation of regression type equations under full posterior 
-    inference. Upcoming is a switching regression modelling approach.
-	These models are helpful to deal with correlation between preset factors of the subjects
-	as well as correlation structures in panel outcome.
+    panel environments. The package currently implements a shared factor 
+	modelling approach which allows for estimation of regression type 
+	equations under full posterior inference. Upcoming is a switching 
+	regression modelling approach. These models are helpful to deal with 
+	correlation between preset factors of the subjects as well as correlation 
+	structures in panel outcome.
 Imports:
-    ggplot2,
     numbers,
     Rsolnp,
+	nloptr,
     truncnorm,
-    Matrix,
-    stats
+    Matrix
 Suggests:
-    R.matlab
+    ggplot2
 Depends: 
-    R(>= 3.4.2)
+    R(>= 3.5.2)
 URL: http://github.com/PatrickPfeifferDsc/bite
 BugReports: http://github.com/PatrickPfeifferDsc/bite/issues
 License: GPL-2

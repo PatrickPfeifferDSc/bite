@@ -27,12 +27,11 @@ panel time - treatment combinations in outcome vector}
 The log-likelihood value corresponding to input values.
 }
 \description{
-Computes the negativ log-likelihood for all observations with treatment j
+Internal. Computes the negativ log-likelihood for all observations with treatment j
 }
 \seealso{
 Other loglikelihoods: \code{\link{lcondx}},
   \code{\link{lmvnorm}}, \code{\link{lnorm}},
-  \code{\link{loglik_mvnorm_balpan}},
   \code{\link{negllik_jt_rho}}, \code{\link{negllik_jt}}
 }
 \concept{loglikelihoods}

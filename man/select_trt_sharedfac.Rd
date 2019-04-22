@@ -7,20 +7,20 @@
 select_trt_sharedfac(data, model, prior, mcmc, control)
 }
 \arguments{
-\item{data}{takes data object from the function start_trt_unbal}
+\item{data}{takes data object from the function bayesTrtEffects}
 
-\item{model}{takes model parameters from function start_trt_unbal}
+\item{model}{takes model parameters from function bayesTrtEffects}
 
 \item{prior}{specified prior parameters}
 
-\item{mcmc}{mcmc parameters specified by start_trt_unbal, potentially subject to change}
+\item{mcmc}{mcmc parameters specified by bayesTrtEffects, potentially subject to change}
 }
 \value{
 Returns a MCMC selection list object containing all estimated coefficients and
 other meassures.
 }
 \description{
-[Internal Function] \code{select_trt_sharedfac} implements the shared
-factor model. It is the core function of wrapper \code{\link{start_trt_unbal}}
+Internal. \code{select_trt_sharedfac} implements the shared
+factor model. It is the core function of wrapper \code{\link{bayesTrtEffects}}
 which passes its parameters on, concerning the MCMC process, model and data.
 }

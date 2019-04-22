@@ -1,6 +1,6 @@
 #' Inefficiency Factor
 #'
-#' \code{ineff_factor} calculates inefficiency facors for certain time series
+#' Internal. \code{ineff_factor} calculates inefficiency facors for certain time series
 #' with autocorrelation after Geyer (1992).
 #'
 #' @param x a time series of length k

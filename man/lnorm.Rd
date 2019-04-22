@@ -15,12 +15,12 @@ lnorm(x, mu, varinv)
 The negative log-Likelihood of given parameters.
 }
 \description{
+Internal.
 \code{lnorm} computes log-Likelihood of a Normal distributed sample
 }
 \seealso{
 Other loglikelihoods: \code{\link{lcondx}},
   \code{\link{llikj}}, \code{\link{lmvnorm}},
-  \code{\link{loglik_mvnorm_balpan}},
   \code{\link{negllik_jt_rho}}, \code{\link{negllik_jt}}
 }
 \concept{loglikelihoods}

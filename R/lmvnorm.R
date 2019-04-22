@@ -1,5 +1,7 @@
 #' Compute log-Likelihood of multivariate Normals
 #'
+#' Internal.
+#'
 #' @param y outcome vector
 #' @param mu vector of means
 #' @param Sigmainv inverse of variance matrix

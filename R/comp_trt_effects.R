@@ -1,6 +1,6 @@
 #' Compute treatment effects
 #'
-#' [Internal Function] computes treatment effects from the coefficients
+#' Internal. computes treatment effects from the coefficients
 #' sampled in the MCMC process.
 #'
 

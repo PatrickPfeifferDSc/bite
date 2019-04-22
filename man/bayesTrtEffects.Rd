@@ -2,7 +2,7 @@
 % Please edit documentation in R/bayesTrtEffects.R
 \name{bayesTrtEffects}
 \alias{bayesTrtEffects}
-\title{Estimation of Bayesian Treatment Effects}
+\title{Bayesian Estimation of Treatment Effects in Panel Setting}
 \usage{
 bayesTrtEffects(base.mat, panel.mat, type = "SF", covars = NULL,
   model.name = "model1", mcmc.control = list(burnin = 1000, select =
@@ -21,27 +21,34 @@ coefficients and treatment effects are computed ("SF" - Shared Factor Model)}
 
 \item{model.name}{String which names the model, defaults to "model1"}
 
-\item{sort.data}{boolean which indicates whether the baseline data and panel data
-should be organised by treatment and panel time. If the dataset is not yet sorted
-this option may sort data in correct format.
+\item{mcmc.control}{a list of items controlling the mcmc parameters, see examples}
 
-The function takes 2 main parameters, base.mat, panel.mat containing the data set on
-which to perform estimation. The dataset has to have certain properties.
-See ?readPanelUb for more information on how to prepare the dataset
-accordingly. For according datasets, the function first sets a lot of parameters
+\item{control}{a list with some general control parameters, the most important is
+control$sort.data which sorts the data for ids, treatment and panel times.
+
+There are 2 main objects necessary for computation of treatment effects, base.mat and panel.mat.
+base.mat contains a dataframe at the baseline (panel time 0) with specific features for latent utility computation.
+panel.mat is a dataframe containing information at panel times, including features that influence
+the panel outcomes. The datasets have to have certain properties.
+See example dataset for more information on how to prepare the dataset
+accordingly. For the datasets, the function first sets a lot of parameters
 influencing estimation and MCMC sampling process. For the time being this
 package includes the functionality of the Shared Factor Model.
-One may also be interested in \code{\link{select_trt_sharedfac}} to see how the
-function operates.}
+It may also be of interest to look at \code{\link{select_trt_sharedfac}} to
+see how the function works.}
+
+\item{sort.data}{boolean which indicates whether the baseline data and panel data
+should be organised by treatment and panel time. If the dataset is not yet sorted
+this option may sort data in correct format.}
 }
 \value{
-For an adequate input file, will output a list object containing all
-coefficients of the model.
+For an adequate input file, \code{bayesTrtEffects} returns output a list
+object containing all coefficients of the model.
 }
 \description{
 \code{bayesTrtEffects} performs an estimation of treatment effects on panel
 structured data. The dataset may be unbalanced, but needs to fullfill
-certain conditions to be properly useable.  The function offers
+certain conditions to be properly useable. The function offers
 some model choices, which provide the framework in which the treatment effect
 is to be estimated.
 }

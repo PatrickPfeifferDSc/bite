@@ -1,6 +1,6 @@
 #' Computes negative log-Likelihood
 #'
-#' Pendant to \code{negllik_jt} for the \eqn{\rho} parameter
+#' Internal. Pendant to \code{negllik_jt} for the \eqn{\rho} parameter
 #'
 #' @param theta parameter of variance/covariance matrix of dimension 2Tmax x 1
 #' @param j treatment

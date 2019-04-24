@@ -7,5 +7,5 @@
 select_trt_switchreg(data, model, prior, mcmc)
 }
 \description{
-Run treatment computations with switching regression model
+Internal.
 }

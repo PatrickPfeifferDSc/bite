@@ -5,15 +5,13 @@
 \alias{trt_baseline}
 \title{Example dataset to demonstrate use and structure of bate package}
 \format{A list containing numerous objects:
-\describe{
-  \item{base.mat}{Data matrix of base format, with columns
-         \item ID: the column which uniquely identifies each subject
-         \item Ti: panel times, the number of subsequent meassures for a subject
-         \item trt: treatment, usually coded 0 or 1
-         \item V1: variable 1, for this dataset normally distributed
-         \item V2: variable 2, for this dataset binary
-         \item V3: variable 3, for this dataset binary
- }
+\itemize{
+   \item{ID: the column which uniquely identifies each subject}
+   \item{Ti: panel times, the number of subsequent meassures for a subject}
+   \item{trt: treatment, usually coded 0 or 1}
+   \item{V1: variable 1, for this dataset normally distributed}
+   \item{V2: variable 2, for this dataset binary}
+   \item{V3: variable 3, for this dataset binary}
 }}
 \source{
 This dataset stems from a simulation process and represents fictive data.

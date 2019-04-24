@@ -30,7 +30,7 @@ the spike and slab variable selection process}
 \item{isel}{indicator whether selection is performed}
 }
 \description{
-\code{draw_indic_beta_lambda} draws beta coefficients for the outcome
+Internal. \code{draw_indic_beta_lambda} draws beta coefficients for the outcome
 models (y) and lambda parameters for shared factor modelling.
 }
 \details{

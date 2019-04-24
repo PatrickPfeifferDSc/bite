@@ -33,7 +33,7 @@ Returns a list of moments of centered x:
 }
 }
 \description{
-[Internal Function] \code{condmoms_util} returns an object consisting of conditional moments
+Internal. \code{condmoms_util} returns an object consisting of conditional moments
 }
 \details{
 Computes conditional mean and variance in the utility x* model.

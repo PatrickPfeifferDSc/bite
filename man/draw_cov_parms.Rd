@@ -7,5 +7,5 @@
 draw_cov_parms(epsy, mu_xst, start_x, nx, start_y, sgma_old, rho_old, pri)
 }
 \description{
-Draw covariates for SRF/SRI models
+Internal.
 }

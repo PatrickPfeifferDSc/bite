@@ -18,5 +18,5 @@ drawErrorVariance(eps2, indt, indy0, sn, prior, fix.sigma = FALSE)
 \item{prior}{object containing prior information, prior standard deviance is used}
 }
 \description{
-Draw Error Variance
+Internal.
 }

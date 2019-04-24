@@ -30,6 +30,6 @@ drawSharedFactor(epsx, lambdax, epsy, sgma2, lambda, start_x, nx, start_y,
 f ... shared latent factor
 }
 \description{
-[Internal Function] \code{draw_sharedfactor} draws the latent factors \eqn{f_i} for
+Internal. \code{draw_sharedfactor} draws the latent factors \eqn{f_i} for
 SF model.
 }

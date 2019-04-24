@@ -8,5 +8,5 @@ draw_factor_switchreg(resy, resx, start_x, nx, start_y, sgma, rho, lambda,
   D)
 }
 \description{
-Draw factors for SRF/SRI
+Internal.
 }

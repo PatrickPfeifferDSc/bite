@@ -21,7 +21,7 @@ comp_logml(ySy, XSy, invBN, indic, iB0)
 Returns an object containing the numeric value of the marginal Likelihood and beta parameters
 }
 \description{
-[Internal Function] \code{comp_logml} will return a numeric value, the maximum log-likelihood
+Internal. \code{comp_logml} will return a numeric value, the maximum log-likelihood
 y = X*alpha+epsilon,  epsilon N(0,S), alpha ~ N(0,inv(iA0))
 }
 \details{

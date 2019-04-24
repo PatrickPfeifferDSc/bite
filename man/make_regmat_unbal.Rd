@@ -12,8 +12,7 @@ make_regmat_unbal(data, model)
 \item{model}{Information on the model type, etc.}
 }
 \value{
-A modelling object with W, the regressor matrix of dimension
-n*t+1 x p
+A modelling object with W, the regressor matrix of dimension n*t+1 x p
 }
 \description{
 Internal. Takes the basic objects after read-in of base.mat

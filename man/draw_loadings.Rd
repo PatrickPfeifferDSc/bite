@@ -7,5 +7,5 @@
 draw_loadings(resy, Xf, resx, start_x, nx, start_y, sgma, rho, prior)
 }
 \description{
-Helpfunction for Model SRF latent Factor Switching Regression
+Internal.
 }

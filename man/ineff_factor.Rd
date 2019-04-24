@@ -13,6 +13,6 @@ ineff_factor(x)
 2 numeric values, the empirical inefficiency factor and m
 }
 \description{
-\code{ineff_factor} calculates inefficiency facors for certain time series
+Internal. \code{ineff_factor} calculates inefficiency facors for certain time series
 with autocorrelation after Geyer (1992).
 }

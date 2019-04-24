@@ -27,8 +27,8 @@ amongst other specifics.
 \description{
 Internal. \code{readPanelUb} takes as arguments the baseline matrix and panel matrix
 seperately and transforms the (unbalanced) panel data in useable format.
-The matrices should already be in the suggested format for this
-function. (See example dataset)
+The matrices should xalready be in the suggested format for this
+function. (See example dataset)l
 }
 \details{
 Base matrices have 1 subject in each row and a unique corresponding ID.

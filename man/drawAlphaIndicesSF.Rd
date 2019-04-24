@@ -28,7 +28,7 @@ delta ...  k x 1 indicators
 alpha ... k x 1  regression effects
 }
 \description{
-[Internal Function] \code{draw_indic_alphaSF} draws indicator values and
+Internal. \code{draw_indic_alphaSF} draws indicator values and
 regression coefficients for the selection model (probit model of
 choosing treatment)
 }

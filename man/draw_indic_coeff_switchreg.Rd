@@ -8,5 +8,5 @@ draw_indic_coeff_switchreg(x, y, Wx, Wy, start_x, nx, start_y, sgma, rho,
   lambda, D, delta, deltafix, omega1, omega2, pri_invB0, isel)
 }
 \description{
-Draw indices for selection upon sigma and rho parameters for SRF/SRI models
+Internal.
 }

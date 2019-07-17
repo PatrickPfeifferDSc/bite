@@ -1,10 +1,10 @@
-#' 
+#'
 #' Run treatment computations with switching regression model
 #'
 #' Internal.
+#'
 
-
-select_trt_switchreg <- function(data, model, prior, mcmc){
+selectTreatmentSWR <- function(data, model, prior, mcmc){
   Tmax <- max(data$Ti)
   y <- data$y
   dn <- c(0,0)

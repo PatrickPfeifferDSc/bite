@@ -16,7 +16,6 @@ comp_trt_effects <- function(mcmc_select, thin = 1){
   alpha <- mcmc_select$alpha[indmc,]
   lambdax <- mcmc_select$lambdax[indmc]
   # sgnlx <- sign(lambdax)
-
   beta <- mcmc_select$beta[indmc, ]
   lambda <- mcmc_select$lambda[indmc, , ]
 

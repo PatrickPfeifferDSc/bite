@@ -14,7 +14,7 @@
 #' @return A list of the new theta accepted value, or the old
 #' value if rejected and an acceptance indicator.
 
-mh_step <- function(theta_old, theta_new, lpost_old, lpost_new, lq_new, lq_old){
+mhStep <- function(theta_old, theta_new, lpost_old, lpost_new, lq_new, lq_old){
   lold <- lpost_old - lq_old
   lnew <- lpost_new - lq_new
   u <- log(runif(1))

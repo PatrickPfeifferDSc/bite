@@ -14,12 +14,6 @@
 #' @return xst x*, the latent utility for selection model
 
 drawUtility <- function(x, mxst, sxst){
-  # Input
-  # x                n x 1         treatment effects, numbered 1..ntreat
-  # mu_xst=mu(x)     1 x n         fixed effects mean for the utilities xst
-  ##########################################################################
-  # Output
-  # xst              1xn           latent utilities
   n <- length(x)
   xst <- matrix(0,n,1)
 

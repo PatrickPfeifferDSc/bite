@@ -12,25 +12,22 @@
 #'
 
 make_regmat_unbal <- function (data, model){
-  if(!exists("covy_common")){
-    data$covy_common <- rep(0, data$dw)
-    print("common covariates for y not found, will be fixed at 0")
+  if(is.null(data$cov_y_common)){
+    data$cov_y_common <- rep(0, data$dw)
+    print("No common covariates for y defined, normal, treatment-separated estimation for all covariates")
   }
   model$Wx <- data$Wx
   model$dx <- data$dx
-  dys <- model$dys <- sum(!data$covy_common) + 1
-
-  W0 <- cbind(rep(1,data$Tn), data$Wi[,!data$covy_common])
-  Wcom <- data$Wi[ ,as.logical(data$covy_common)]
+  model$dys <- dys <- sum(!data$cov_y_common) + 1     # dimension of covariates in heterogeneous treatment + intercept
+  W0 <- cbind(rep(1,data$Tn), data$Wi[,!data$cov_y_common])
+  Wcom <- data$Wi[ ,as.logical(data$cov_y_common)]
   if (model$type == "SRF" || model$type == "SRI" || model$type == "SF"){
     W <- matrix(0, data$Tn, dys*2)
     W[ ,1:dys] <- W0
-    W[data$indy1, (dys+1):(2*dys)] <- cbind(rep(1, data$ny1), data$Wi[data$indy1, !data$covy_common])
+    W[data$indy1, (dys+1):(2*dys)] <- cbind(rep(1, data$ny1), data$Wi[data$indy1, !data$cov_y_common])
     model$W <- cbind(W, Wcom)
-  } else{
-    if (model$type=="SFimp"){
-      model$W <- cbind(W0, matrix(0, nrow=data$Tn, ncol=model$dys), Wcom, W0,W0,Wcom)
-    } else{ stop("invalid model type has been specified")}
+  }else{
+    stop("invalid model type has been specified")
   }
   model$dy <- dim(model$W)[2]
   data_object <- list(data=data, model=model)

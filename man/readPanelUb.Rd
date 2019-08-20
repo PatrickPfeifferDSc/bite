@@ -4,8 +4,8 @@
 \alias{readPanelUb}
 \title{Read Data file and transform}
 \usage{
-readPanelUb(base.mat, panel.mat, type, covars, name, sort.data,
-  control.test = FALSE)
+readPanelUb(base_mat, panel_mat, type, covars, name, sort_data,
+  control_test, data_name)
 }
 \arguments{
 \item{type}{contains a string of possible model types, must be one of: "SF"}
@@ -14,7 +14,7 @@ readPanelUb(base.mat, panel.mat, type, covars, name, sort.data,
 
 \item{name}{contains name of the model, which will be saved}
 
-\item{sort.data}{control parameter passed down in funcional hierarchy to
+\item{sort_data}{control parameter passed down in funcional hierarchy to
 determine whether observations should be sorted for by ID and panel time}
 
 \item{infile}{a list of base matrix and panel matrix}
@@ -25,10 +25,10 @@ dataset and a model object, which contains covariate information
 amongst other specifics.
 }
 \description{
-Internal. \code{readPanelUb} takes as arguments the baseline matrix and panel matrix
+[Internal] \code{readPanelUb} takes as arguments the baseline matrix and panel matrix
 seperately and transforms the (unbalanced) panel data in useable format.
 The matrices should xalready be in the suggested format for this
-function. (See example dataset)l
+function. (See example dataset)
 }
 \details{
 Base matrices have 1 subject in each row and a unique corresponding ID.
@@ -47,8 +47,8 @@ checks, but may prove insufficient for some wierd structured individual
 chases and proceed to calculate, potentially giving bad quality estimate
 results. The base and panel matrices should also be in ascending order
 by subject panel times, and by maximum panel time, meaning subjects with
-max panel time 3 are listed before subjects with maximum panel time 4, 5
-,etc. This is necessary to use the quicker evaluation functions for the
+max panel time 3 are listed before subjects with maximum panel time
+4, 5, etc. This is necessary to use quicker evaluation functions for the
 estimation procedures.
 Also at the moment the base matrix needs to have the subject ID
 in the first column, panel times of each subject in second column, the

@@ -1,6 +1,6 @@
 #' Draw indicators and regression coefficients
 #'
-#' Internal. \code{draw_indic_alphaSF} draws indicator values and
+#' Internal. \code{drawAlphaIndicSF} draws indicator values and
 #' regression coefficients for the selection model (probit model of
 #' choosing treatment)
 #'
@@ -22,7 +22,7 @@
 #' @return alpha ... k x 1  regression effects
 #'
 
-drawAlphaIndicesSF <- function(y, X, delta, deltafix, omega, invA0, isel, fix.alpha = FALSE){
+drawAlphaIndicSF <- function(y, X, delta, deltafix, omega, invA0, isel, fix.alpha = FALSE){
   if(fix.alpha){
     delta <- c(1,1,0,1,1)
     alpha <- c(-0.9, 0.8, 0 , 1.5)
@@ -32,11 +32,11 @@ drawAlphaIndicesSF <- function(y, X, delta, deltafix, omega, invA0, isel, fix.al
   df <- length(delta)
   nd <- df - sum(deltafix)
 
-  invAN <- (t(X)%*%X) + invA0
-  Xy <- t(X)%*%y
-  yy <- t(y)%*%y
+  invAN <- (t(X) %*% X) + invA0
+  Xy <- t(X) %*% y
+  yy <- t(y) %*% y
 
-  logml.obj <- comp_logml(yy,Xy,invAN,delta,invA0)
+  logml.obj <- comp_logml(yy, Xy, invAN, delta, invA0)
   lmlik_old <- logml.obj$lmarlik; AN <- logml.obj$BN; aNh<- logml.obj$bNh;
 
   if (isel==1){

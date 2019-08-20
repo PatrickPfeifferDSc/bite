@@ -1,6 +1,6 @@
 #' Draw latent utilities
 #'
-#' Internal. \code{draw_utility} draws latent utilities for the
+#' [Internal] \code{draw_utility} draws latent utilities for the
 #' probit model, which represents the selection of treatment. Latent
 #' utilities (x*) range from -Inf to +Inf. For x* being positive, the
 #' subject selects treatment, subject does not decide for treatment otherwise.
@@ -15,8 +15,7 @@
 
 drawUtility <- function(x, mxst, sxst){
   n <- length(x)
-  xst <- matrix(0,n,1)
-
+  xst <- matrix(0, n, 1)
   for (j in 0:1){
     idx <- (x==j)
     if (j == 0){

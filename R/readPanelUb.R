@@ -150,7 +150,7 @@ readPanelUb <- function(base_mat, panel_mat, type, covars, name, sort_data, cont
     names(covars) <- paste0("cov_", names(covars))
     data <- c(data, list(cov_x=cov_x, cov_y=cov_y), covars)
   }else{
-    warning("Argument covars is NULL of not of correct structure, therefore the models consider all covariates to be standard contributors and not be subject to selection.")
+    message("argument covars is NULL, all covariates will be subject to variable selection.")
     data <- c(data, list(cov_x_fix = matrix(0, 1, data$dx-1),
                          cov_y_fix = matrix(0, 1, data$dw), cov_y_common = matrix(0, 1, data$dw)))
   }

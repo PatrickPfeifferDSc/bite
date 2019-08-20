@@ -65,11 +65,11 @@ selectTreatmentSF <- function(data, model, prior, mcmc, control){
   invA0 <- diag(prior$par$invA0)                      # alpha start parameter values (prior)
   invB0 <- c(prior$par$invB0, prior$invL0)            # beta and lambda start parameter values (prior)
 
-  # Starting values for  mcmc
+  # Starting values for mcmc
   deltax <- mcmc$start$deltax       # starting deltas for x model (inclusion in probit model)
   deltay <- mcmc$start$deltay       # starting deltas for outcome model (16*2 + 6*2)
 
-  # initial inclusion probabilities
+  # initial correlation parameters of pot outcomes and treatment
   omega_alpha <- 0.5             # omega_alpha shows inclusion probabilities for coefficients into the probit model (trt selection)
   omega_beta <- 0.5
   omega_lambda <- 0.5
@@ -77,7 +77,7 @@ selectTreatmentSF <- function(data, model, prior, mcmc, control){
   start_obj <- startingValues(model, data$x, y, data$Tn)    # get starting values for alpha_nu, beta param
   alphav <- start_obj$alphav; beta0 <- start_obj$beta0; res_var <- start_obj$res_var;
   rm(start_obj)
-  # selection model
+  # treatment selection model
   mu_xstar <- data$Wx %*% alphav    # mean value of x parameters for given data (Wx should be feature vector of subject before treatment)
   xstar <- drawUtility(data$x, mu_xstar , 1)     # given parameters draw a latent utility x'star from
   lambdax <- 1          # initial lambda_x value
@@ -90,7 +90,7 @@ selectTreatmentSF <- function(data, model, prior, mcmc, control){
 
   f <- rnorm(data$n)           # draw shared factors for each subject from N(0,1)
   fy <- rep.int(f, times = data$Ti)            # multiply drawn factors to each panel outcome of subjects
-  Fact <- kronecker(matrix(1, 1, Tmax),fy)
+  Fact <- kronecker(matrix(1, 1, Tmax),fy) * ind_t
 
   ny0 <- sum(data$indy0)                 # number of panel outcomes observed without trt
   ny1 <- data$Tn - ny0                   # number of panel outcomes under trt
@@ -129,9 +129,9 @@ selectTreatmentSF <- function(data, model, prior, mcmc, control){
 
     # STEP II: Sample the latent factors
     resx <- xstar - mu_xstar
-    f <- drawSharedFactor(resx,lambdax,resy,sgma2,lambda,data$start_x,data$nx, data$start_y, data$Tn, control$fix_f)
+    f <- drawSharedFactor(resx, lambdax, resy, sgma2, lambda, data$start_x, data$nx, data$start_y, data$Tn, control$fix_f)
     fy <- rep.int(f, times = data$Ti)
-    Fact <- kronecker(matrix(1, 1, Tmax),fy)
+    Fact <- kronecker(matrix(1, 1, Tmax),fy) * ind_t
 
     Wfupper <- cbind(Fact[1:ny0,], F01)
     Wflower <- cbind(F10 , Fact[(ny0+1):data$Tn,])
@@ -145,18 +145,16 @@ selectTreatmentSF <- function(data, model, prior, mcmc, control){
 
     Wx <- cbind(data$Wx,f)
 
-    indic_obj <- drawAlphaIndicesSF(xstar, Wx, deltax, model$deltax_fix, omega_alpha, invA0, isel, control$fix_alpha)
+    indic_obj <- drawAlphaIndicSF(xstar, Wx, deltax, model$deltax_fix, omega_alpha, invA0, isel, control$fix_alpha)
     deltax <- indic_obj$delta; alpha <- indic_obj$alpha;
 
     alphav <- alpha[1:model$dx]
-    lambdax <- alpha[model$dx+1]
+    lambdax <- alpha[dx]
     mu_xstar <- tcrossprod(data$Wx,t(alphav))
 
     # STEP V  Sample indicators and fixed effects
     # replace
     # Wy[,(model$dy+1):dyall] <- Wf
-    # 2
-    # print(paste0("structure of Wf is ", str(Wf), " \n structure of Wy is ", str(Wy)))
     Wy <- Wy[ ,-((model$dy+1):dyall)]
     Wy <- cbind(Wy, Wf)
 

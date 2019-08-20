@@ -24,6 +24,6 @@ Returns a list of
 }
 }
 \description{
-Internal. Computes starting values for alpha and beta parameters. 
+Internal. Computes starting values for alpha and beta parameters.
 Alpha parameters are estimated by a GLM fit, beta parameters by a linear model.
 }

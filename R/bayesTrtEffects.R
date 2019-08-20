@@ -6,10 +6,13 @@
 #' some model choices, which provide the framework in which the treatment effect
 #' is to be estimated.
 #'
-#' @param base_mat a data frame or matrix file capturing the baseline (at paneltime 0)
-#' @param panel_mat a data frame file. Needs to be already correctly structured.
-#' @param type contains one of currently one possible Strings to define the model under which
-#' coefficients and treatment effects are computed ("SF" - Shared Factor Model)
+#' @param base_mat a data frame or matrix file, containing id, maximum panel time on each subject,
+#' the treatment indicator and the baseline features.
+#' @param panel_mat a data frame of matrix file, containing id, panel times per subject, the panel outcomes
+#' and other features, relevant for regression on the outcomes.
+#' @param type contains one of currently two possible Strings to define the modelling approach of the regression
+#' coefficients, correlation structure between outcomes and the utility. Also will
+#' influence the treatment effects ("SF" - Shared Factor, "SWR" - Switching Regression)
 #' @param covars contains a character vector, naming the covariates of the dataset.
 #' @param model_name String which names the model, defaults to "model1"
 #' @param sort_data boolean which indicates whether the baseline data and panel data
@@ -31,7 +34,7 @@
 #' accordingly. For the datasets, the function first sets a lot of parameters
 #' influencing estimation and MCMC sampling process. For the time being this
 #' package includes the functionality of the Shared Factor Model.
-#' It may also be of interest to look at \code{\link{select_trt_sharedfac}} to
+#' It may also be of interest to look at \code{\link{selectTreatmentSF}} to
 #' see how the function works.
 #'
 #' @return For an adequate input file, \code{bayesTrtEffects} returns output a list
@@ -39,7 +42,7 @@
 #'
 #' @export
 
-bayesTrtEffects <- function(base_mat, panel_mat, type='SF', covars = NULL,
+bayesTrtEffects <- function(base_mat, panel_mat, type = 'SF', covars = NULL,
                             mcmc_control = list(burnin = 1000, select = 500, M = 1000),
                             prior_control = list(var_sel = 5, var_fix = 0.1),
                             control = list(fix_alpha=FALSE, fix_beta=FALSE, fix_sigma=FALSE,

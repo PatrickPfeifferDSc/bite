@@ -5,8 +5,6 @@
 #' 5000 subjects, each of which has 4 panel observations on simulated variables.
 #' The second of 2 argument datasets for\code{\link{bayesTrtEffects}}.
 #'
-#' #' @docType data
-#'
 #' @format A data frame with subject related feature columns:
 #' \describe{
 #' \item{ID}{ID of subject/item}

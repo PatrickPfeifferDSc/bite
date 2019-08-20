@@ -21,9 +21,9 @@
 
 comp_logml <- function(ySy, XSy, invBN, indic, iB0){
   k <- length(indic)
-  index <- which(indic!=0)
+  index <- which(indic != 0)
   invB0 <- iB0[index,index]  # get entries from the precision matrix
-  if (invB0[1,1]==0){
+  if (invB0[1] == 0){
     lDet_B0 <- (-log(det(invB0[2:k,2:k])))
   }else{
     lDet_B0 <- (-log(det(invB0)))

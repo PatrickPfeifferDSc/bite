@@ -19,11 +19,12 @@ make_regmat_unbal <- function (data, model){
   model$Wx <- data$Wx
   model$dx <- data$dx
   model$dys <- dys <- sum(!data$cov_y_common) + 1     # dimension of covariates in heterogeneous treatment + intercept
-  W0 <- cbind(rep(1,data$Tn), data$Wi[,!data$cov_y_common])
+  W0 <- cbind(rep(1,data$Tn), data$Wi[ ,!data$cov_y_common])
   Wcom <- data$Wi[ ,as.logical(data$cov_y_common)]
-  if (model$type == "SRF" || model$type == "SRI" || model$type == "SF"){
+
+  if (model$type %in% c("SF", "SRF", "SRI")){
     W <- matrix(0, data$Tn, dys*2)
-    W[ ,1:dys] <- W0
+    W[ ,(1:dys)] <- W0
     W[data$indy1, (dys+1):(2*dys)] <- cbind(rep(1, data$ny1), data$Wi[data$indy1, !data$cov_y_common])
     model$W <- cbind(W, Wcom)
   }else{

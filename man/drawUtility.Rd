@@ -17,7 +17,7 @@ drawUtility(x, mxst, sxst)
 xst x*, the latent utility for selection model
 }
 \description{
-Internal. \code{draw_utility} draws latent utilities for the
+[Internal] \code{draw_utility} draws latent utilities for the
 probit model, which represents the selection of treatment. Latent
 utilities (x*) range from -Inf to +Inf. For x* being positive, the
 subject selects treatment, subject does not decide for treatment otherwise.

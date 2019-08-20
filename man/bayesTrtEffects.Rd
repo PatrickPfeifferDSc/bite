@@ -4,42 +4,52 @@
 \alias{bayesTrtEffects}
 \title{Bayesian Estimation of Treatment Effects in Panel Setting}
 \usage{
-bayesTrtEffects(base.mat, panel.mat, type = "SF", covars = NULL,
-  model.name = "model1", mcmc.control = list(burnin = 1000, select =
-  500, M = 1000), control = list(fix.alpha = FALSE, fix.beta = FALSE,
-  fix.sigma = FALSE, fix.f = FALSE, sort.data = FALSE))
+bayesTrtEffects(base_mat, panel_mat, type = "SF", covars = NULL,
+  mcmc_control = list(burnin = 1000, select = 500, M = 1000),
+  prior_control = list(var_sel = 5, var_fix = 0.1),
+  control = list(fix_alpha = FALSE, fix_beta = FALSE, fix_sigma = FALSE,
+  fix_f = FALSE, sort_data = TRUE, test = FALSE), model_name = "model1",
+  data_name = "treatment dataset 1")
 }
 \arguments{
-\item{base.mat}{a data frame or matrix file capturing the baseline (at paneltime 0)}
+\item{base_mat}{a data frame or matrix file, containing id, maximum panel time on each subject,
+the treatment indicator and the baseline features.}
 
-\item{panel.mat}{a data frame file. Needs to be already correctly structured.}
+\item{panel_mat}{a data frame of matrix file, containing id, panel times per subject, the panel outcomes
+and other features, relevant for regression on the outcomes.}
 
-\item{type}{contains one of currently one possible Strings to define the model under which
-coefficients and treatment effects are computed ("SF" - Shared Factor Model)}
+\item{type}{contains one of currently two possible Strings to define the modelling approach of the regression
+coefficients, correlation structure between outcomes and the utility. Also will
+influence the treatment effects ("SF" - Shared Factor, "SWR" - Switching Regression)}
 
 \item{covars}{contains a character vector, naming the covariates of the dataset.}
 
-\item{model.name}{String which names the model, defaults to "model1"}
-
-\item{mcmc.control}{a list of items controlling the mcmc parameters, see examples}
+\item{mcmc_control}{a list of items controlling the mcmc parameters, see examples}
 
 \item{control}{a list with some general control parameters, the most important is
-control$sort.data which sorts the data for ids, treatment and panel times.
+control$sort_data which sorts the data for ids, treatment and panel times.}
 
-There are 2 main objects necessary for computation of treatment effects, base.mat and panel.mat.
-base.mat contains a dataframe at the baseline (panel time 0) with specific features for latent utility computation.
-panel.mat is a dataframe containing information at panel times, including features that influence
+\item{model_name}{String which names the model, defaults to "model1"}
+
+\item{sort_data}{boolean which indicates whether the baseline data and panel data
+should be organised by treatment and panel time. If the dataset is not yet sorted
+this option may sort data in correct format.}
+
+\item{cov_y_common}{by default is NULL. If not NULL, has to be a vector of 0s and 1s with length
+matching the number of covariates in panel matrix. For the covariates indexed with 1,
+the model does not estimate different effects w.r.t. treatment, but assumes the
+covariate has an overall effect on the different panel outcomes.
+
+There are 2 main objects necessary for computation of treatment effects, base_mat and panel_mat.
+base_mat contains a dataframe at the baseline (panel time 0) with specific features for latent utility computation.
+panel_mat is a dataframe containing information at panel times, including features that influence
 the panel outcomes. The datasets have to have certain properties.
 See example dataset for more information on how to prepare the dataset
 accordingly. For the datasets, the function first sets a lot of parameters
 influencing estimation and MCMC sampling process. For the time being this
 package includes the functionality of the Shared Factor Model.
-It may also be of interest to look at \code{\link{select_trt_sharedfac}} to
+It may also be of interest to look at \code{\link{selectTreatmentSF}} to
 see how the function works.}
-
-\item{sort.data}{boolean which indicates whether the baseline data and panel data
-should be organised by treatment and panel time. If the dataset is not yet sorted
-this option may sort data in correct format.}
 }
 \value{
 For an adequate input file, \code{bayesTrtEffects} returns output a list

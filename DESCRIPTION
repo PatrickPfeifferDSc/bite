@@ -1,8 +1,8 @@
 Package: bite
 Type: Package
 Title: Bayesian Inference On Treatment Effects For Panel Data 
-Version: 0.0.0.9000
-Date: 2018-03-11
+Version: 0.1.0
+Date: 2019-08-18
 Authors@R: person("Patrick", "Pfeiffer", email="patrick.pfeiffer.dsc@gmail.com", role=c("aut", "cre"))
 Maintainer: Patrick Pfeiffer <patrick.pfeiffer.dsc@gmail.com>
 Description: This package allows the user to estimate treatment effects in 

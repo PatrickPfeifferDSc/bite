@@ -1,6 +1,6 @@
 #' Transscribes Basic Object to Internal Matrix
 #'
-#' Internal. Takes the basic objects after read-in of base.mat
+#' [Internal] Takes the basic objects after read-in of base.mat
 #' and panel.mat and restructures them to an internal data object to proceed.
 #' Constructs a proper model matrix, which encapsulates the outcome model
 #' covariates for each panel time

@@ -1,7 +1,7 @@
 #' Simulated data on baseline subject level
 #'
 #' A simulated dataset (from the framework of the shared factor model,
-#' see ?select_trt_sharedfac) to
+#' see ?selectTreatmentSF) to
 #' demonstrate the use of the SR-model. The file contains
 #' 5000 subjects with their respective feature information at baseline time.
 #' Consider these features to be relevant for confounding and influencing the

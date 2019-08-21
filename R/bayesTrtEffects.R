@@ -1,19 +1,34 @@
 #' Bayesian Estimation of Treatment Effects in Panel Setting
 #'
-#' \code{bayesTrtEffects} performs an estimation of treatment effects on panel
-#' structured data. The dataset may be unbalanced, but needs to fullfill
-#' certain conditions to be properly useable. The function offers
-#' some model choices, which provide the framework in which the treatment effect
-#' is to be estimated.
+#' \code{bayesTrtEffects} performs Bayesian estimation of regression coefficients and according treatment effects
+#'  on panel structured data on a certain outcome of interest. The dataset may be unbalanced, but needs to fullfill
+#' some conditions to get proper results. The function offers some model choices, which determine the framework
+#' in which the treatment effects will be estimated.
 #'
 #' @param base_mat a data frame or matrix file, containing id, maximum panel time on each subject,
 #' the treatment indicator and the baseline features.
 #' @param panel_mat a data frame of matrix file, containing id, panel times per subject, the panel outcomes
 #' and other features, relevant for regression on the outcomes.
-#' @param type contains one of currently two possible Strings to define the modelling approach of the regression
-#' coefficients, correlation structure between outcomes and the utility. Also will
-#' influence the treatment effects ("SF" - Shared Factor, "SWR" - Switching Regression)
-#' @param covars contains a character vector, naming the covariates of the dataset.
+#' @param type contains one of two possible Strings to define the modelling approach of the regression
+#' coefficients, correlation structure between outcomes and the treatment. Also will have an
+#' influence on the resulting treatment effects ("SF" - Shared Factor, "SWR" - Switching Regression)
+#' In general "SF" will take much less computation time, while "SWR" offers slightly more flexible
+#' dependence structures.
+#' @param covars By default is NULL. May Contain the following elements of a list, to further specify
+#' fixed variables (that are not subject to variable selection) or common effects (variables get the same effect,
+#' independent of treatment). MUST contain the following elements, if not all variables are automatically
+#' subjected to selection, and assumed to be able to have different effects on the target under treatment.
+#' \begin{itemize}
+#' \item 'x_fix': a vector of 0s and 1s with length of the number of variables in treatment selection model.
+#' Any 1 will not be target of variable selection. Defaults to all 0s.
+#' \item 'y_fix': a vector of 0s and 1s with length of the number of variables in the outcome models.
+#' Any 1 will not be target of variable selection. Defaults to all 0s.
+#' \item 'y_common': a vector of 0s and 1s with length equal to number of variables in the outcome models. If a 1 occurs, the
+#' corresponding variable will be estimated with indifference to treatment and only have a common effect. Is automatically excluded
+#' from variable selection.
+#' \item 'y_nb': number of base parameters
+#' \item 'y_np': number of parameters in the selection model
+#' \end{itemize}
 #' @param model_name String which names the model, defaults to "model1"
 #' @param sort_data boolean which indicates whether the baseline data and panel data
 #' should be organised by treatment and panel time. If the dataset is not yet sorted
@@ -25,6 +40,10 @@
 #' matching the number of covariates in panel matrix. For the covariates indexed with 1,
 #' the model does not estimate different effects w.r.t. treatment, but assumes the
 #' covariate has an overall effect on the different panel outcomes.
+#' @param model_name a character vector to store in the result object, for an automated
+#' creation of many objects in sequence, based on different models.
+#' @param data_name a character vector to store in the result object, for an automated
+#' creation of many objects in sequence, based on different data.
 #'
 #' There are 2 main objects necessary for computation of treatment effects, base_mat and panel_mat.
 #' base_mat contains a dataframe at the baseline (panel time 0) with specific features for latent utility computation.
@@ -37,7 +56,7 @@
 #' It may also be of interest to look at \code{\link{selectTreatmentSF}} to
 #' see how the function works.
 #'
-#' @return For an adequate input file, \code{bayesTrtEffects} returns output a list
+#' @return For adequate input files, \code{bayesTrtEffects} returns output a list
 #' object containing all coefficients of the model.
 #'
 #' @export
